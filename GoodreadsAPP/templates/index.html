@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<head>
+
+    <style>
+    
+
+    body {
+    background: rgb(32, 70, 77);
+    background-blend-mode: multiply;
+    font-family: Helvetica, sans-serif;
+}
+
+.formContainer {
+    position: relative;
+    margin: 5% auto;
+    /* width: 70%; */
+    width: 900px;
+    min-height: 300px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+    background: rgb(255, 255, 255);
+    padding: 0px 0px 5px 15px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.formHeader2 {
+    margin: 0px 0px 15px 20px;
+    width: 80%;
+    text-align: center;
+    padding-left: 2%;
+    padding-top:6%;
+    color: rgb(32, 70, 77);
+}
+.formHeader {
+    margin: 0px 0px 15px 20px;
+    width: 80%;
+    text-align: center;
+    /* color: rgb(255, 255, 255); */
+    color: rgb(32, 70, 77);
+    padding-top: 5%
+}
+
+.formContentContainer {
+    margin-top: 5%;
+}
+
+.formInput {
+    display: block;
+    margin: 0px 0px 20px 20px;
+    padding: 4px;
+    width: 90%;
+    height: 5%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #aaa;
+    font-size: 12px;
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    background: inherit;
+    color: rgb(32, 70, 77);
+}
+
+.formInput3 {
+    display: block;
+    /* margin: 0px 0px 20px 20px; */
+    padding: 4px;
+    margin: 0 auto;
+    width: 900px;
+    height: 5%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #aaa;
+    font-size: 15px;
+    text-align: center;
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    background: inherit;
+    color: white;
+}
+
+.formInput2 {
+    display: block;
+    margin: 0px 0px 20px 20px;
+    padding: 4px;
+    width: 90%;
+    height: 5%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #aaa;
+    font-size: 12px;
+    color: rgb(32, 70, 77);
+}
+
+
+
+.submitButton {
+    background: rgb(71, 158, 148);
+    color: white;
+    margin: 10px 20px;
+    width: 90%;
+    height: 30px;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.submitButton2 {
+    background: rgb(71, 158, 148);
+    color: white;
+    margin: 10px 20px;
+    width: 90%;
+    height: 30px;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.submitButton:hover{
+    color: rgb(71, 158, 148);
+    background: white;
+    border-style: solid;
+    border-color: rgb(71, 158, 148);
+}
+
+.submitButton2:hover{
+    color: rgb(71, 158, 148);
+    background: white;
+    border-style: solid;
+    border-color: rgb(71, 158, 148);
+}
+
+
+.orCircle {
+    position: absolute;
+    top: 44%;
+    left: 47%;
+    width: 32px;
+    height: 32px;
+    background: rgb(4, 65, 75);
+    border-radius: 50%;
+    line-height: 32px;
+    box-shadow: 1px 1px 2px grey;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+}
+
+.leftSide {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color:rgba(115, 166, 168, 0.6);
+    margin: auto;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;;
+
+    
+}
+
+.rightSide {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+    .title{
+        width:500px;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 5%;
+        color: white;
+    }
+
+
+
+    .box{
+        width: 900px;
+        display: block;
+        margin: 0 auto;
+        margin-top: -20px;
+    }
+
+    .bottom{
+        width: 70%;
+        position: relative;
+        margin: 5% auto;
+        width: 900px;
+        padding-top: -100px;
+        
+    }
+
+
+    </style>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+   <h1 class="title">Gooodreads Automation</h1>
+    <div class="formContainer">
+        <div class="leftSide">
+            <h2 class="formHeader">Add Books to your Goodreads Want to Read Shelf</h2>
+            <div class="formContentContainer">
+                <form action="/" method="post">
+                    {% csrf_token %}
+
+                    <input type="text" id="id_username" name="username" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="formInput" placeholder="Account Email" required/>
+                    <input type="password" name="password" id="id_password" class="formInput" placeholder="Account Password"required />
+                    <input type="text" name="booklist" id="booklist" class="formInput" placeholder="List of books to add (Jane Eyre, Pride and Prejudice, ...)"required />
+                    <input type="submit" class="submitButton" name="submitButton" value="submit">
+
+                </form>
+            </div>
+        </div>
+        <div class="rightSide">
+            <h2 class="formHeader2">Get Goodreads Recommendations</h2>
+            <div class="formContentContainer">
+                <form action="/" method="post">
+                    {% csrf_token %}
+
+                    <input type="text" id="id_username" name="username" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="formInput2" placeholder="Account Email" required/>
+                    <br>
+                    <input type="password" name="password" id="id_password" class="formInput2" placeholder="Account Password"required />
+                    <br>
+                    <input type="submit" class="submitButton2" name="submitButton2" value="submit">
+
+                </form>
+            </div>
+        </div>
+        <div class="orCircle">or</div>
+        
+    </div>
+    <div class="bottom">
+        <form action="/" method="post">
+            {% csrf_token %}
+            <input type="text" name="location" id="location" class="formInput3" placeholder="Enter address to find libraries near by "required />
+        </form>
+
+        {% if map%}
+        <div class="box">
+            <iframe class="map"
+        width="900"
+        height="400"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src={{map}}>
+        </iframe>
+        </div>
+        {% endif %}
+
+
+
+    </div>
+    <!-- <div class="box">
+        <iframe class="map"
+    width="600"
+    height="450"
+    style="border:0"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA7W2zL5BxDEfqr6mJgOV_cYWEw4H94T7c
+        &q=Space+Needle,Seattle+WA">
+    </iframe>
+    </div> -->
+</body>
