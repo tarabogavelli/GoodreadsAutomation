@@ -244,6 +244,10 @@
         
     </div>
     <div class="bottom">
+        {% if message.tags == 'success' %}
+        <h1>CHECK 123</h1>
+            <div class="message">{{message}}</div>
+        {% endif %}
         <form action="/" method="post">
             {% csrf_token %}
             <input type="text" name="location" id="location" class="formInput3" placeholder="Enter address to find libraries near by "required />

@@ -32,6 +32,7 @@ def index(request):
         BOOKLIST = booklist.split(",")
         
         wantToRead(USERNAME,PASSWORD,BOOKLIST)
+        messages.success(request, "Your books had been added, go to your goodreads profile to check it our!")
 
         #return redirect('/success/')
         return render(request, "index.html", context)
@@ -75,10 +76,9 @@ def wantToRead(username, password, booklist):
 
     op = webdriver.ChromeOptions()
     op.add_argument('headless')
+    op.add_argument("--window-size=1920,1080")
     driver = webdriver.Chrome(options=op)
-    # Initialize the webdriver
     #driver = webdriver.Chrome()
-    # Navigate to the webpage
     driver.get("https://www.goodreads.com")
     driver.implicitly_wait(10)
 
@@ -106,15 +106,15 @@ def wantToRead(username, password, booklist):
         search_box.send_keys(item)
         driver.find_element(By.XPATH, '//form[@class="searchBox__form"]/button').click()
         driver.find_elements(By.XPATH,'//button[@class="wtrToRead"]')[0].click()
-
     sleep(5)
     driver.quit()
 
 def getRecommendations(username, password):
-    """op = webdriver.ChromeOptions()
+    op = webdriver.ChromeOptions()
     op.add_argument('headless')
-    driver = webdriver.Chrome(options=op)"""
-    driver = webdriver.Chrome()
+    op.add_argument("--window-size=1920,1080")
+    driver = webdriver.Chrome(options=op)
+    #driver = webdriver.Chrome()
     driver.get("https://www.goodreads.com")
     driver.implicitly_wait(10)
     signin = '//*[@id="signIn"]/div/div/a'
